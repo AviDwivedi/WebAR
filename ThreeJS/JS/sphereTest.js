@@ -1,5 +1,3 @@
-
-
 // Set up the scene
 const scene = new THREE.Scene();
 
@@ -26,13 +24,13 @@ const sphere = new THREE.Mesh( sphereGeometry, sphereMaterial );
 // Add the sphere to the scene
 scene.add( sphere );
 
+camera.position.z = 5;
 
 function animate() {
     requestAnimationFrame( animate );
     renderer.render( scene, camera );
-}
-
-animate();
+};
+  animate();
 
   // Set up the light source
 const light = new THREE.PointLight( 0xffffff );
