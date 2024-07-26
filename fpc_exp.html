@@ -1,4 +1,4 @@
-<html>
+<!-- <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
@@ -21,4 +21,70 @@
       </a-entity>
     </a-scene>
   </body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MindAR AR Model Projection</title>
+  <script src="https://cdn.jsdelivr.net/npm/mindar@1.1.4/dist/mindar.min.js"></script>
+  <style>
+    /* Add your custom styles here */
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    
+    video {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <video id="video" playsinline muted></video>
+
+  <script>
+    const video = document.getElementById('video');
+
+    Promise.all([
+      MindAR.getUserMedia({ video: true }),
+      MindAR.loadProject('mindar_FPC_assets/card.mind')
+    ])
+      .then(([stream, project]) => {
+        video.srcObject = stream;
+        video.play();
+
+        MindAR.start({
+          camera: video,
+          project,
+          success: () => console.log('MindAR started successfully'),
+          failure: (error) => console.error('MindAR startup error:', error)
+        });
+      })
+      .catch(error => console.error('Error:', error));
+
+    MindAR.onTargetFound = (target) => {
+      const model = MindAR.createModel(
+        'mindar_FPC_assets/scene.gltf',
+        {
+          position: target.pose.position,
+          rotation: target.pose.rotation,
+          scale: {
+            x: 0.1, // Adjust scale as needed
+            y: 0.1,
+            z: 0.1
+          }
+        }
+      );
+
+      MindAR.render(model);
+    };
+  </script>
+</body>
 </html>
