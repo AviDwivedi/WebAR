@@ -7,22 +7,23 @@
   <body>
     <a-scene mindar-image="imageTargetSrc: mindar_FPC_assets/FPC_BAG.mind" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-	<img id="card" src="mindar_FPC_assets/FPC_BAG.jpg" />
-  <!-- <img id="paintandquest-preview" src="mindar_FPC_assets/phone.png" /> -->
-  <!-- <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="mindar_FPC_assets/viraatroop.mp4"></video> -->
-  <video id="paintandquest-video-webm" autoplay="true" loop="true" src="mindar_FPC_assets/viraatroop.webm"></video>
-          
-	<!-- <a-asset-item id="avatarModel" src="mindar_FPC_assets/F1.glb"></a-asset-item>
-      </a-assets> -->
+        <img id="card" src="mindar_FPC_assets/FPC_BAG.jpg" />
+        <!-- 
+        <img id="paintandquest-preview" src="mindar_FPC_assets/phone.png" />
+        <video id="paintandquest-video-mp4" autoplay="false" loop="true" src="mindar_FPC_assets/viraatroop.mp4"></video> 
+        -->
+        <video id="paintandquest-video-webm" autoplay="true" loop="true" src="mindar_FPC_assets/viraatroop.webm"></video>
+      </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-	<a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
-	<a-video src="#paintandquest-video-webm" position="0 0 0.01" width="1" height="0.552" rotation="0 0 0"></a-video>
-  <!-- <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
-	  animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
-	> -->
+        <a-plane src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+        <a-video src="#paintandquest-video-webm" position="0 0 0.01" width="1" height="0.552" rotation="0 0 0"></a-video>
+        <!--
+        <a-gltf-model rotation="0 0 0" position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
+          animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"></a-gltf-model>
+        -->
       </a-entity>
     </a-scene>
   </body>
